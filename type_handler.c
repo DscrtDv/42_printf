@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   type_handler.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: tcensier <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/03 10:37:36 by tcensier      #+#    #+#                 */
+/*   Updated: 2022/11/03 10:51:23 by tcensier      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "libft/libft.h"
 
@@ -9,6 +21,8 @@ int	handle_char(char c)
 
 int	handle_str(char *str)
 {
+	if (!str)
+		return (handle_str("(null)"));
 	ft_putstr(str);
 	return ((int) ft_strlen(str));
 }
@@ -36,7 +50,7 @@ int	handle_unsigned(void *ptr, char c)
 	if (c == 'p')
 	{
 		if (!n)
-			return (handle_str("(nil)"));
+			return (handle_str("0x0"));
 		len += handle_str("0x");
 		result = unsigned_itoabase(n, "0123456789abcdef", 16);
 	}

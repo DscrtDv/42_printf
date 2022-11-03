@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   num_utils.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: tcensier <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/03 10:36:36 by tcensier      #+#    #+#                 */
+/*   Updated: 2022/11/03 10:37:16 by tcensier      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft/libft.h"
 #include "ft_printf.h"
-#include <stddef.h>
-#include <stdio.h>
 
 static size_t	ulong_len(long long n, int base)
 {
@@ -12,12 +22,9 @@ static size_t	ulong_len(long long n, int base)
 		len++;
 	while (n)
 	{
-		//printf("Here you go %llu/ %d \n", n, base);
-		n /= (unsigned long) base;
-		//printf("%zu, %llu / %d \n", len, n, base);
+		n /= (unsigned long)base;
 		len++;
 	}
-//	printf("Len of num: %zu \n", len);
 	return (len);
 }
 
@@ -25,7 +32,7 @@ char	*unsigned_itoabase(long long n, char *set, int base)
 {
 	size_t	len;
 	char	*result;
-	//printf(" n is: %llu \n", n);	
+
 	len = ulong_len(n, base);
 	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
@@ -36,10 +43,8 @@ char	*unsigned_itoabase(long long n, char *set, int base)
 	while (n)
 	{
 		result[len - 1] = set[(unsigned)n % base];
-	//	printf("/%i at index %zu expected %c for %lld \n", result[len - 1], len - 1, set[n%base], n);
 		n /= (unsigned long)base;
 		len--;
 	}
-	//printf("%s \n", result);
 	return (result);
 }
