@@ -14,7 +14,7 @@ NAME := libftprintf.a
 LIBFT := ./libft/libft.a
 SRC := ft_printf.c \
 	   num_utils.c \
-	   handle_type.c
+	   type_handler.c
 
 OBJ := $(SRC:.c=.o)
 HEADERS := ft_printf.h \

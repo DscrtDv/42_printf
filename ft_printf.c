@@ -15,21 +15,19 @@
 
 static int	function_selector(int c, va_list vl)
 {
-	int counter;
+	int	counter;
 
 	counter = 0;
 	if (c == 'c')
 		counter += handle_char(va_arg(vl, int));
 	else if (c == 's')
-		counter += handle_str(va_arg(vl, char*));
+		counter += handle_str(va_arg(vl, char *));
 	else if (c == 'i' || c == 'd')
 		counter += handle_int(va_arg(vl, int));
-	else if (c == 'p' || c == 'x' || c == 'X')
-		counter += handle_hex(va_arg(vl, void*), c);
+	else if (c == 'u' || c == 'p' || c == 'x' || c == 'X')
+		counter += handle_unsigned(va_arg(vl, void *), c);
 	else if (c == '%')
 		counter += handle_percent();
-//	else if (c == 'u')
-//		counter += handle_uint(va_arg(vl, unsigned int));
 	return (counter);
 }
 
@@ -37,7 +35,7 @@ static int	conversion_handler(const char *str, va_list vl)
 {
 	int	index;
 	int	len;
-	int arg_len;
+	int	arg_len;
 
 	index = 0;
 	len = 0;
@@ -50,7 +48,7 @@ static int	conversion_handler(const char *str, va_list vl)
 			arg_len += function_selector(str[index], vl);
 			index++;
 		}
-		else 
+		else
 		{
 			ft_putchar(str[index]);
 			index++;

@@ -10,24 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
 
-
-int		ft_printf(const char *, ...);
+int		ft_printf(const char *str, ...);
 
 // type_handler.c
 int		handle_char(char c);
 int		handle_str(char *str);
 int		handle_int(int n);
-int		handle_hex(void *ptr, char c);
-int 	handle_percent();
+int		handle_unsigned(void *ptr, char c);
+int		handle_percent(void);
 
 //num_utils.c
-char	*hex_converter(unsigned long n, char *set);
+char	*unsigned_itoabase(long long n, char *set, int base);
 
 #endif
