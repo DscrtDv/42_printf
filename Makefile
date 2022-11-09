@@ -28,7 +28,7 @@ $(NAME): $(OBJ) libft
 	@make -C ./libft
 	@cp libft/libft.a $(NAME)
 	@ar rcs $@ $(OBJ)
-	@echo "Archive file $(NAME) successfully created and indexed."
+	@echo "Printf: Archive file $(NAME) successfully created and indexed."
 
 %.o: %.c $(HEADERS)
 	@$(CC) -c $(CFLAGS) -o $@ $<
@@ -36,15 +36,15 @@ $(NAME): $(OBJ) libft
 clean:
 	@make clean -C ./libft
 	@rm -rf $(OBJ);
-	@echo "OBJ files successfully deleted."
+	@echo "Printf: OBJ files successfully deleted."
 
 fclean: clean
 	@make fclean -C ./libft
 	@rm -rf $(NAME)
-	@echo "$(NAME) successfully deleted".
+	@echo "Printf: $(NAME) successfully deleted".
 
 re: fclean all
-	@echo "Cleaned and rebuilt successfully."
+	@echo "Printf: Cleaned and rebuilt successfully."
 
 norm:
 	@norminette $(SRC) ./libft | grep -v Norme -B1 || true
