@@ -23,10 +23,10 @@ int		ft_printf(const char *str, ...);
 int		handle_char(char c);
 int		handle_str(char *str);
 int		handle_int(int n);
-int		handle_unsigned(void *ptr, char c);
+int		handle_puxx(void *ptr, char c);
 int		handle_percent(void);
 
 //num_utils.c
-char	*unsigned_itoabase(long long n, char *set, int base);
+char	*ft_itoabase(long long n, char *set, unsigned long base, int sign);
 
 #endif

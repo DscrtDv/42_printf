@@ -31,15 +31,19 @@ int	handle_int(int n)
 {
 	char	*str_itoa;
 	int		len;
+	int		sign;
 
-	str_itoa = ft_itoa(n);
+	sign = 0;
+	if (n < 0)
+		sign++;
+	str_itoa = ft_itoabase(n, "0123456789", 10, sign);
 	ft_putstr(str_itoa);
 	len = (int) ft_strlen(str_itoa);
 	free(str_itoa);
 	return (len);
 }
 
-int	handle_unsigned(void *ptr, char c)
+int	handle_puxx(void *ptr, char c)
 {
 	long long		n;
 	char			*result;
@@ -50,18 +54,18 @@ int	handle_unsigned(void *ptr, char c)
 	if (c == 'p')
 	{
 		if (!n)
-			return (handle_str("0x0"));
+			return (handle_str("(nil)"));
 		len += handle_str("0x");
-		result = unsigned_itoabase(n, "0123456789abcdef", 16);
+		result = ft_itoabase(n, "0123456789abcdef", 16, 0);
 	}
 	if (!n)
 		return (handle_char('0'));
 	else if (c == 'u')
-		result = unsigned_itoabase((unsigned int)n, "0123456789", 10);
+		result = ft_itoabase((unsigned int)n, "0123456789", 10, 0);
 	else if (c == 'x')
-		result = unsigned_itoabase((unsigned int)n, "0123456789abcdef", 16);
+		result = ft_itoabase((unsigned int)n, "0123456789abcdef", 16, 0);
 	else if (c == 'X')
-		result = unsigned_itoabase((unsigned int)n, "0123456789ABCDEF", 16);
+		result = ft_itoabase((unsigned int)n, "0123456789ABCDEF", 16, 0);
 	len += handle_str(result);
 	if (result)
 		free(result);

@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf.h"
+#include <stddef.h>
+#include <stdlib.h>
 
-static size_t	ulong_len(long long n, int base)
+static size_t	ulong_len(long long n, unsigned long base)
 {
 	size_t	len;
 
@@ -22,28 +22,32 @@ static size_t	ulong_len(long long n, int base)
 		len++;
 	while (n)
 	{
-		n /= (unsigned long)base;
+		n /= base;
 		len++;
 	}
 	return (len);
 }
 
-char	*unsigned_itoabase(long long n, char *set, int base)
+char	*ft_itoabase(long long n, char *set, unsigned long base, int sign)
 {
 	size_t	len;
 	char	*result;
 
-	len = ulong_len(n, base);
+	if (n < 0 && sign)
+		n *= -1;
+	len = ulong_len(n, base) + sign;
 	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
 	if (n == 0)
 		result[0] = '0';
+	else if (sign == 1)
+		result[0] = '-';
 	result[len] = '\0';
 	while (n)
 	{
 		result[len - 1] = set[(unsigned)n % base];
-		n /= (unsigned long)base;
+		n /= base;
 		len--;
 	}
 	return (result);

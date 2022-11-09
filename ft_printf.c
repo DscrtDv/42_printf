@@ -25,13 +25,13 @@ static int	function_selector(int c, va_list vl)
 	else if (c == 'i' || c == 'd')
 		counter += handle_int(va_arg(vl, int));
 	else if (c == 'u' || c == 'p' || c == 'x' || c == 'X')
-		counter += handle_unsigned(va_arg(vl, void *), c);
+		counter += handle_puxx(va_arg(vl, void *), c);
 	else if (c == '%')
 		counter += handle_percent();
 	return (counter);
 }
 
-static int	conversion_handler(const char *str, va_list vl)
+static int	input_iterator(const char *str, va_list vl)
 {
 	int	index;
 	int	len;
@@ -67,7 +67,7 @@ int	ft_printf(const char *str, ...)
 	input = ft_strdup(str);
 	output_len = 0;
 	va_start(vl, str);
-	output_len = conversion_handler(input, vl);
+	output_len = input_iterator(input, vl);
 	va_end(vl);
 	free((char *) input);
 	return (output_len);
