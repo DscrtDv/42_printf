@@ -1,8 +1,6 @@
 # PRINTF
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)
-
 ![mark-100_100](https://user-images.githubusercontent.com/92900172/219589973-cf218793-37ae-48dd-a256-6fb6e3339ad9.svg)
-
 ![code-by-dscrtdv](https://user-images.githubusercontent.com/92900172/200837083-3fe44953-8c00-49be-9837-a2abb5437ea6.svg)
 Simplified re-implementation of printf.
 
